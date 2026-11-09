@@ -321,7 +321,10 @@ tutorForm.addEventListener('submit', async (e) => {
     thinking.textContent = reply;
   } catch (err) {
     thinking.remove();
-    appendTutor('error', `Tutor is offline: ${err.message}`);
+    const msg = /rate-limited/i.test(err.message)
+      ? 'Rate-limited by the model. Try again in a moment.'
+      : err.message;
+    appendTutor('error', msg);
   } finally {
     tutorSend.disabled = false;
   }

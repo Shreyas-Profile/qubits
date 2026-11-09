@@ -56,7 +56,11 @@ export async function onRequestPost({ request, env }) {
 
     if (!resp.ok) {
       const txt = await resp.text();
-      return json({ error: `Upstream ${resp.status}: ${txt.slice(0, 200)}` }, 502);
+      // Google's free tier rate-limits quickly; surface a friendly line.
+      if (resp.status === 429 || /rate.limit/i.test(txt)) {
+        return json({ error: 'Rate-limited — try again in a moment.' }, 429);
+      }
+      return json({ error: `Upstream ${resp.status}: ${txt.slice(0, 160)}` }, 502);
     }
     const data = await resp.json();
     const reply = data.choices?.[0]?.message?.content?.trim();
