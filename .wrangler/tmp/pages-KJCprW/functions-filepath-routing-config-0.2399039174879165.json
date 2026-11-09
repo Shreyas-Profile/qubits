@@ -1,0 +1,13 @@
+{
+  "routes": [
+    {
+      "routePath": "/api/tutor",
+      "mountPath": "/api",
+      "method": "POST",
+      "module": [
+        "api/tutor.js:onRequestPost"
+      ]
+    }
+  ],
+  "baseURL": "/"
+}
