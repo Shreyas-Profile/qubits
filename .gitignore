@@ -3,3 +3,5 @@ node_modules
 .env.local
 .DS_Store
 set-secret.ps1
+set-pages-secret.ps1
+.wrangler/
