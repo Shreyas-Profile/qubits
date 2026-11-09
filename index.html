@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>qubits · learn quantum by playing with it</title>
+  <meta name="description" content="Six interactive lessons on qubits, superposition, entanglement, and Bell's theorem. Built on real Bloch spheres you can drive with your mouse." />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚛️</text></svg>" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Source+Serif+4:wght@400;500;600&display=swap" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="top">
+    <div class="brand"><span class="logo">⚛</span> qubits</div>
+    <nav class="lesson-dots" id="lesson-dots"></nav>
+    <div class="top-right">
+      <a href="https://shreyas.uk" class="home-link">shreyas.uk ↗</a>
+    </div>
+  </header>
+
+  <main class="layout" id="layout">
+    <section class="stage" id="stage">
+      <div class="sphere-wrap" id="sphere-wrap">
+        <canvas class="sphere single" id="sphere-a"></canvas>
+        <canvas class="sphere" id="sphere-b" hidden></canvas>
+      </div>
+      <div class="stage-overlay" id="stage-overlay"></div>
+    </section>
+
+    <aside class="lesson">
+      <div class="lesson-head">
+        <span class="lesson-num" id="lesson-num">01</span>
+        <h1 class="lesson-title" id="lesson-title">The qubit</h1>
+        <p class="lesson-sub" id="lesson-sub">Loading…</p>
+      </div>
+
+      <div class="lesson-body" id="lesson-body"></div>
+
+      <div class="probs" id="probs">
+        <div class="prob-row">
+          <span class="prob-label">P(0)</span>
+          <div class="prob-bar"><div class="prob-fill" id="prob0"></div></div>
+          <span class="prob-val" id="prob0-val">—</span>
+        </div>
+        <div class="prob-row">
+          <span class="prob-label">P(1)</span>
+          <div class="prob-bar"><div class="prob-fill red" id="prob1"></div></div>
+          <span class="prob-val" id="prob1-val">—</span>
+        </div>
+      </div>
+
+      <div class="controls" id="controls"></div>
+
+      <div class="lesson-nav">
+        <button class="nav-btn ghost" id="prev-btn" disabled>← Previous</button>
+        <button class="nav-btn primary" id="next-btn" disabled>Next lesson →</button>
+      </div>
+
+      <div class="tutor">
+        <div class="tutor-head">
+          <span class="tutor-label">Ask the tutor</span>
+          <span class="tutor-meta">AI · plain English, lesson-aware</span>
+        </div>
+        <div class="tutor-log" id="tutor-log">
+          <div class="tutor-msg system">Ask anything about this lesson. "What just happened?", "Why did the arrow move there?", "Explain in one sentence."</div>
+        </div>
+        <form class="tutor-form" id="tutor-form">
+          <input class="tutor-input" id="tutor-input" type="text" placeholder="Ask about this lesson…" autocomplete="off" />
+          <button class="tutor-send" type="submit" id="tutor-send">Ask</button>
+        </form>
+      </div>
+    </aside>
+  </main>
+
+  <footer class="foot">
+    <span>Built by <a href="https://shreyas.uk">Shreyas Pavuluri</a></span>
+    <span>Source · <a href="https://github.com/Shreyas-Profile/qubits">github.com/Shreyas-Profile/qubits</a></span>
+  </footer>
+
+  <script type="module" src="js/main.js"></script>
+</body>
+</html>
