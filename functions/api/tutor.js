@@ -44,7 +44,7 @@ export async function onRequestPost({ request, env }) {
         'X-Title': 'qubits',
       },
       body: JSON.stringify({
-        model: 'google/gemini-2.5-flash-lite',
+        model: 'openai/gpt-4o-mini',
         messages: [
           { role: 'system', content: SYSTEM_PROMPT },
           { role: 'user', content: userMsg },
