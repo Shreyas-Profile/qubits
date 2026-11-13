@@ -31,6 +31,8 @@ export const LESSONS = [
         <li><em>Drag on the sphere</em> — rotate the arrow to any point and watch the bars update.</li>
         <li><em>Reset to |0⟩</em> — snap the arrow back to the top of the sphere.</li>
       </ul>
+      <p><strong>In real life:</strong> a qubit is a tiny physical object isolated from the outside world. IBM and Google use superconducting loops cooled to near absolute zero. IonQ uses single atoms held in place by lasers. Others use photons or electrons in diamond. All of them are one qubit.</p>
+      <p><strong>Where it's used:</strong> every quantum algorithm and every quantum sensor is built out of qubits. The race to scale from a few qubits to millions is the current frontier of the whole field.</p>
     `,
     showProbs: true,
     overlay: [
@@ -79,6 +81,8 @@ export const LESSONS = [
         <li><em>H</em> — apply the Hadamard gate. Puts the qubit into (or out of) superposition.</li>
         <li><em>Reset</em> — snap back to <code>|0⟩</code>.</li>
       </ul>
+      <p><strong>In real life:</strong> the famous double-slit experiment — fire a single electron at a wall with two slits and it goes through <strong>both</strong>, interfering with itself to make a stripey pattern. That's superposition made visible. Any quantum computer puts its qubits through superposition before doing anything useful.</p>
+      <p><strong>Where it's used:</strong> superposition is the reason quantum computers can out-run classical ones. Algorithms like Shor's (which breaks internet encryption) and Grover's (which speeds up search) only work because they can process many possibilities at once by putting qubits into superposition.</p>
     `,
     showProbs: true,
     overlay: [
@@ -127,6 +131,8 @@ export const LESSONS = [
         <li><em>Reset to superposition</em> — put the qubit back into the 50/50 state to measure again.</li>
         <li><em>Clear counts</em> — reset the histogram.</li>
       </ul>
+      <p><strong>In real life:</strong> a detector reading an electrical pulse; a photon hitting a camera pixel; a microwave readout tone bouncing off a superconducting qubit and coming back with a tiny shift. Whatever it is, it has to be big and irreversible enough to leave a record.</p>
+      <p><strong>Where it's used:</strong> measurement is how every quantum algorithm ends — rotate the qubits until the right answer has the highest probability, then measure. It's also at the heart of <em>quantum random number generators</em> (true randomness, not pseudo-random) and quantum error correction, which uses extra measurement qubits to spot and fix errors.</p>
     `,
     showProbs: true,
     showHistogram: true,
@@ -191,6 +197,8 @@ export const LESSONS = [
       </ul>
       <p>Every gate is reversible — apply the same one twice and you end up back where you started.</p>
       <p><strong>Puzzle:</strong> starting at <code>|0⟩</code>, get the arrow down to <code>|1⟩</code>. The simplest answer is one button. Can you find a two-button path too?</p>
+      <p><strong>In real life:</strong> a gate is a carefully timed pulse of energy. Microwave photons flipping a superconducting qubit; laser pulses pushing a trapped ion; beam splitters and phase shifters along the path of a photon. Each pulse is calibrated in nanoseconds so the arrow lands exactly where it should.</p>
+      <p><strong>Where it's used:</strong> every quantum program is a sequence of gates. Shor's algorithm (factoring big numbers), Grover's (fast search), the Quantum Fourier Transform, quantum chemistry simulations — they are all just gate sequences written like a recipe.</p>
     `,
     showProbs: true,
     overlay: [
@@ -265,6 +273,8 @@ export const LESSONS = [
         <li>Press <em>Measure both</em>. Both qubits snap to the same outcome — always <code>00</code> or <code>11</code>, never <code>01</code> or <code>10</code>. Random, but always matching.</li>
       </ol>
       <p><em>Reset to |00⟩</em> puts both qubits back to the start so you can try again.</p>
+      <p><strong>In real life:</strong> shining a laser through a special crystal splits one photon into two entangled photons that fly off in different directions. Two trapped ions sitting side by side can be entangled by a pair of laser pulses. China's Micius satellite has sent entangled photon pairs between ground stations over 1,200 km apart.</p>
+      <p><strong>Where it's used:</strong> quantum key distribution (unhackable encryption — any eavesdropper breaks the entanglement and gets caught); quantum teleportation (moving a qubit's state from A to B without moving the qubit); quantum networks that link separate quantum computers together.</p>
     `,
     showProbs: false,
     overlay: [
@@ -333,6 +343,8 @@ export const LESSONS = [
         <li><em>Run CHSH test</em> — the simulator prepares entangled pairs 400 times at 4 different angle pairs and prints <code>S</code>. Watch it land above 2.</li>
         <li><em>Run again</em> — rerun with fresh random outcomes.</li>
       </ul>
+      <p><strong>In real life:</strong> Alain Aspect's 1982 experiment with entangled photons in a Paris basement. In 2015, Delft closed every known loophole with entangled nitrogen atoms in diamond, 1.3 km apart. All of these find <code>S ≈ 2.83</code>, exactly what quantum mechanics predicts. There is no wiggle room left for hidden variables.</p>
+      <p><strong>Where it's used:</strong> <em>device-independent cryptography</em> — running a Bell test as part of a security protocol lets two people share a secret key that is secure even if you don't trust the hardware. It's also used as a sanity check that a new quantum computer is really quantum, not just a classical simulator.</p>
     `,
     showProbs: false,
     showCHSH: true,
