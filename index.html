@@ -13,12 +13,23 @@
 </head>
 <body>
   <header class="top">
-    <div class="brand"><span class="logo">⚛</span> qubits</div>
+    <button class="brand" id="brand-btn" type="button"><span class="logo">⚛</span> qubits</button>
     <nav class="lesson-dots" id="lesson-dots"></nav>
     <div class="top-right">
       <a href="https://shreyas.uk" class="home-link">shreyas.uk ↗</a>
     </div>
   </header>
+
+  <section class="home" id="home" hidden>
+    <div class="home-inner">
+      <div class="home-hero">
+        <h1 class="home-title">Learn quantum, interactively.</h1>
+        <p class="home-sub">Six short lessons on a real Bloch sphere. Drive the gates yourself, measure, entangle, and break Bell's inequality. Click any lesson to start — they're independent.</p>
+      </div>
+      <div class="home-grid" id="home-grid"></div>
+      <p class="home-foot">Built by <a href="https://shreyas.uk">Shreyas Pavuluri</a>. Source: <a href="https://github.com/Shreyas-Profile/qubits">github</a>.</p>
+    </div>
+  </section>
 
   <main class="layout" id="layout">
     <section class="stage" id="stage">

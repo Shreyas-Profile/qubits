@@ -23,11 +23,14 @@ export const LESSONS = [
     sub: 'Drag the arrow. See how its direction becomes a probability.',
     kind: 'single',
     body: `
-      <p>A classical bit is a switch — 0 or 1. Nothing in between. Your laptop stores billions of them.</p>
-      <p>A <em>qubit</em> is also a real physical thing, usually a single electron, atom, or photon. But quantum mechanics lets it be a specific <strong>blend</strong> of 0 and 1 at the same time — with an exact "how much" of each.</p>
-      <p>Describing that blend takes <strong>two angles</strong>: how much it tilts toward 0 vs 1, and a rotation around the vertical axis (called the <em>phase</em>). Two angles trace out the surface of a sphere — so every possible qubit state becomes a point on this sphere. Physicists call it the <em>Bloch sphere</em>. It's just a map.</p>
-      <p>Top pole = pure <code>|0⟩</code>. Bottom pole = pure <code>|1⟩</code>. Equator = exactly 50/50. Everywhere else = some tilted mix.</p>
-      <p><strong>Try it:</strong> drag the arrow around the sphere. The bars below show the chance of each outcome if you measured the qubit right now.</p>
+      <p>A normal computer stores information as bits — switches that are either 0 or 1. A <em>qubit</em> is the quantum version. Like a bit, it can be 0 or 1. Unlike a bit, it can also be a specific <strong>mix</strong> of both at the same time.</p>
+      <p>Because there are many possible mixes, we draw the qubit as a point on a sphere — called the <em>Bloch sphere</em>. The top of the sphere is pure <code>|0⟩</code>. The bottom is pure <code>|1⟩</code>. The equator is a 50/50 mix. Anywhere else is some tilted version in between.</p>
+      <p>The bars under the sphere show the chance of getting 0 or 1 if you looked at the qubit right now.</p>
+      <p><strong>Buttons:</strong></p>
+      <ul>
+        <li><em>Drag on the sphere</em> — rotate the arrow to any point and watch the bars update.</li>
+        <li><em>Reset to |0⟩</em> — snap the arrow back to the top of the sphere.</li>
+      </ul>
     `,
     showProbs: true,
     overlay: [
@@ -68,11 +71,14 @@ export const LESSONS = [
     sub: 'Press H. Watch the qubit become 0 and 1 at the same time.',
     kind: 'single',
     body: `
-      <p>The qubit starts at <code>|0⟩</code> — the top of the sphere. If you measured it now, you'd get 0 every single time, with no randomness.</p>
-      <p>Press the <em>Hadamard gate</em> (<code>H</code>). It's a rotation: the arrow swings from the top pole down to the <strong>equator</strong>. Both probability bars jump to 50%.</p>
-      <p>That new state has a name: <em>superposition</em>. The qubit is genuinely 0 and 1 at the same time, with equal weight. Press H again and it swings back to <code>|0⟩</code> — superposition is reversible.</p>
-      <p>Here's the point that hurts the brain: this is <strong>not</strong> "we just don't know yet". A hidden coin flip would behave differently. The qubit is really <strong>both</strong> values — an actual, measurable blend — right up until you look at it. This is what lets quantum computers explore many answers at once.</p>
-      <p><strong>Try it:</strong> press H, see the arrow move, read the probabilities. Press H again, watch it un-mix.</p>
+      <p>A <em>superposition</em> is when a qubit is in both <code>|0⟩</code> and <code>|1⟩</code> at the same time. The arrow sits somewhere between the poles — most often on the equator, which is an exact 50/50 mix.</p>
+      <p>This isn't the qubit being "we don't know which one it is". It's genuinely both at once. Only when you measure it does it pick a side.</p>
+      <p>The easiest way to create a superposition is a special gate called <em>Hadamard</em>, written <code>H</code>. Apply H to <code>|0⟩</code> and it swings the arrow from the top of the sphere straight down to the equator — perfect 50/50. Apply H <strong>again</strong> and the arrow swings back up to <code>|0⟩</code>. It's reversible.</p>
+      <p><strong>Buttons:</strong></p>
+      <ul>
+        <li><em>H</em> — apply the Hadamard gate. Puts the qubit into (or out of) superposition.</li>
+        <li><em>Reset</em> — snap back to <code>|0⟩</code>.</li>
+      </ul>
     `,
     showProbs: true,
     overlay: [
@@ -112,11 +118,15 @@ export const LESSONS = [
     sub: 'Look at the qubit. Watch it collapse.',
     kind: 'single',
     body: `
-      <p>We've set the qubit on the equator — a perfect 50/50 superposition. Now the big question: what actually happens when you <em>look</em>?</p>
-      <p>Press <em>Measure</em>. The arrow snaps violently to either the top pole (<code>|0⟩</code>) or the bottom pole (<code>|1⟩</code>) — and that's it. The superposition is gone. Measure again and it stays at that pole.</p>
-      <p>This snap has a name: <strong>wavefunction collapse</strong>. The result is genuinely random — no hidden mechanism decides it in advance. But the <strong>probabilities</strong> are set by the arrow's direction: the closer to the top pole, the more likely 0.</p>
-      <p>Measurement is the one place quantum weirdness forces a definite answer. Before you look: both. After you look: one. And the choice of "look" matters — these rules only apply when something irreversible (a photon hitting a detector, for example) interacts with the qubit.</p>
-      <p><strong>Try it:</strong> press Measure 10+ times. The histogram should land near 50/50 — the geometry on the sphere becoming the physics of outcomes.</p>
+      <p>Measuring a qubit means looking at it to get an answer: 0 or 1. The moment you measure, the arrow snaps to one of the two poles and the superposition is gone. The one you get is picked randomly, with the bars telling you how likely each one is.</p>
+      <p>Measurement is also final. Once the qubit snaps to <code>|0⟩</code>, it stays at <code>|0⟩</code> — any more measurements give the same answer until you reset or apply a new gate.</p>
+      <p>The qubit here starts in a 50/50 superposition, so you should get 0 about half the time and 1 about half the time. The histogram below keeps a running count.</p>
+      <p><strong>Buttons:</strong></p>
+      <ul>
+        <li><em>Measure</em> — look at the qubit. It collapses to 0 or 1.</li>
+        <li><em>Reset to superposition</em> — put the qubit back into the 50/50 state to measure again.</li>
+        <li><em>Clear counts</em> — reset the histogram.</li>
+      </ul>
     `,
     showProbs: true,
     showHistogram: true,
@@ -171,16 +181,16 @@ export const LESSONS = [
     sub: 'Build a sequence. Get the arrow to point at |1⟩.',
     kind: 'single',
     body: `
-      <p>Classical computers run on logic gates — <code>AND</code>, <code>OR</code>, <code>NOT</code>. Flip bits in predictable ways. Quantum computers have gates too, but with a twist: <strong>every gate is a rotation of the arrow on the sphere</strong>. That's it. All of quantum computing is rotating arrows around until the one you want is pointing where you want.</p>
-      <p>The single-qubit gates you've got:</p>
+      <p>A <em>gate</em> is an operation you apply to a qubit to move the arrow on the sphere. Every quantum gate is some kind of rotation. A quantum program is just a sequence of gates that ends with the arrow pointing where you want.</p>
+      <p>The four single-qubit gates here:</p>
       <ul>
-        <li><code>X</code> — the quantum NOT. Flips <code>|0⟩</code> ↔ <code>|1⟩</code> by rotating 180° around the x axis.</li>
-        <li><code>Z</code> — 180° rotation around the z (vertical) axis. Doesn't change the probabilities of 0 vs 1, but it flips the <em>phase</em>, which matters when gates stack up later.</li>
-        <li><code>Y</code> — 180° around the y axis. Combines flip + phase.</li>
-        <li><code>H</code> — Hadamard. Turns <code>|0⟩</code> into a 50/50 superposition, and back again.</li>
+        <li><em>X</em> — the quantum NOT. Flips the arrow upside-down: <code>|0⟩</code> ↔ <code>|1⟩</code>.</li>
+        <li><em>Y</em> — flips the arrow in a different direction (rotation around the y axis).</li>
+        <li><em>Z</em> — leaves <code>|0⟩</code> and <code>|1⟩</code> alone on the poles, but rotates things sitting on the equator.</li>
+        <li><em>H</em> — Hadamard. Moves a pole to the equator (creates superposition) and back.</li>
       </ul>
-      <p>Two neat facts: every gate is <em>reversible</em> (apply it twice and you're back where you started, for these ones), and this tiny set is enough to build any quantum program.</p>
-      <p><strong>Puzzle:</strong> starting from <code>|0⟩</code>, get the arrow to <code>|1⟩</code>. One gate solves it. More than one combination works — can you find a two-gate path too?</p>
+      <p>Every gate is reversible — apply the same one twice and you end up back where you started.</p>
+      <p><strong>Puzzle:</strong> starting at <code>|0⟩</code>, get the arrow down to <code>|1⟩</code>. The simplest answer is one button. Can you find a two-button path too?</p>
     `,
     showProbs: true,
     overlay: [
@@ -247,12 +257,14 @@ export const LESSONS = [
     sub: 'Link two qubits. Measure one. Watch the other follow.',
     kind: 'twin',
     body: `
-      <p>Two qubits now — qubit A on the left, qubit B on the right. Each starts at <code>|0⟩</code>.</p>
-      <p>Press <em>H on A</em> to put A in superposition, then <em>CNOT A→B</em>. CNOT is a two-qubit gate: it flips B <strong>if</strong> A is 1. Since A is "half 0, half 1", B inherits the uncertainty — but locked to A's.</p>
-      <p>Now look at both spheres. The arrows have <strong>shrunk into the middle</strong>. That's not a glitch. It means neither qubit alone has a definite state on the Bloch sphere anymore — the information isn't inside A or inside B, it's in the <em>link between them</em>. You don't have two qubits; you have one joined-up system.</p>
-      <p>Press <em>Measure both</em>. The arrows snap to the poles — and always to the <strong>same</strong> outcome (<code>00</code> or <code>11</code>, never <code>01</code> or <code>10</code>), even though which one happens is random.</p>
-      <p>This is <strong>entanglement</strong>. The spooky part: it would work even if A and B were a lightyear apart. Measure A here, and B instantly shows the matching outcome. Einstein hated this and called it "spooky action at a distance". He thought it meant quantum mechanics was incomplete. In Lesson 6, you'll prove with your own hands that he was wrong.</p>
-      <p>Entanglement is the engine behind quantum teleportation, quantum cryptography (you can detect eavesdroppers by breaking it), and the speedup that makes quantum computers interesting at all.</p>
+      <p>Two qubits are <em>entangled</em> when they're so linked that neither one has a definite state on its own — only the pair does. If you measure one, the other is instantly decided too, even if they're far apart.</p>
+      <p>Two qubits now: A (purple, left) and B (red, right). Both start at <code>|0⟩</code>. Follow the steps in order:</p>
+      <ol>
+        <li>Press <em>H on A</em>. Qubit A goes into a 50/50 superposition. B is still <code>|0⟩</code>.</li>
+        <li>Press <em>CNOT A→B</em>. This is a two-qubit gate that flips B whenever A is 1. The result: both arrows shrink into the middle of their spheres. They now have no individual state — the state lives in the <em>pair</em>.</li>
+        <li>Press <em>Measure both</em>. Both qubits snap to the same outcome — always <code>00</code> or <code>11</code>, never <code>01</code> or <code>10</code>. Random, but always matching.</li>
+      </ol>
+      <p><em>Reset to |00⟩</em> puts both qubits back to the start so you can try again.</p>
     `,
     showProbs: false,
     overlay: [
@@ -309,15 +321,18 @@ export const LESSONS = [
     sub: "Prove with your own hands that quantum beats any classical theory.",
     kind: 'single',
     body: `
-      <p>Lesson 5 showed entangled qubits always matching. That's weird — but maybe not <em>magic</em>. Maybe each qubit was secretly stamped "0" or "1" when they were created, like a pair of coins hidden in boxes, and measurement just reveals the stamp. Einstein believed something like this: <em>local hidden variables</em>.</p>
-      <p>In 1964, John Bell found a test that could tell the two worlds apart. Measure each qubit along four different angle choices, build a number called <code>S</code> from the correlations, and watch where it lands.</p>
+      <p>Entangled qubits always give matching answers. One obvious explanation: maybe each qubit was secretly stamped "0" or "1" when it was created, and measuring just reveals the stamp. Einstein thought something like this — called <em>local hidden variables</em>.</p>
+      <p>In 1964, John Bell proved this idea is <strong>testable</strong>. Measure entangled qubits at four different angle pairs, count how often they match, and combine the results into a single number called <code>S</code>.</p>
       <ul>
-        <li><strong>Any</strong> hidden-coin theory, no matter how clever, is stuck with <code>S ≤ 2</code>. This is the <em>Bell inequality</em> — pure maths, no physics.</li>
-        <li>Quantum mechanics predicts you can reach <code>S = 2√2 ≈ 2.83</code>.</li>
+        <li>Any "hidden-stamp" theory can only reach <code>S ≤ 2</code>.</li>
+        <li>Quantum mechanics predicts up to <code>S ≈ 2.83</code>.</li>
       </ul>
-      <p>Press <em>Run CHSH test</em>. The simulator prepares a Bell pair 400 times at each of 4 angle choices, counts up the correlations, and prints <code>S</code>. If the bar lands above 2.0, you've just shown — on your own machine — that the universe cannot be a box of hidden coins.</p>
-      <p>Real labs have done this experiment with photons kilometres apart (closing every loophole). They always get ~2.83. The 2022 Nobel Prize in Physics went to Alain Aspect, John Clauser and Anton Zeilinger for exactly this.</p>
-      <p>That's as weird as it gets. You can't explain entanglement by anything the qubits "carry" with them. The correlation lives in the system itself.</p>
+      <p>If the real number is above 2, hidden stamps are ruled out. Real labs have done this with photons kilometres apart — they get ~2.83. The 2022 Nobel Prize in Physics went to the people who proved it.</p>
+      <p><strong>Buttons:</strong></p>
+      <ul>
+        <li><em>Run CHSH test</em> — the simulator prepares entangled pairs 400 times at 4 different angle pairs and prints <code>S</code>. Watch it land above 2.</li>
+        <li><em>Run again</em> — rerun with fresh random outcomes.</li>
+      </ul>
     `,
     showProbs: false,
     showCHSH: true,

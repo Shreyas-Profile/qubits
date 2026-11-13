@@ -38,6 +38,10 @@ const tutorLog = $('tutor-log');
 const tutorForm = $('tutor-form');
 const tutorInput = $('tutor-input');
 const tutorSend = $('tutor-send');
+const homeEl = $('home');
+const homeGridEl = $('home-grid');
+const layoutEl = $('layout');
+const brandBtn = $('brand-btn');
 
 // ---------- Progress ----------
 function loadProgress() {
@@ -263,7 +267,7 @@ function renderLesson(index) {
   // Nav state — always enabled; dots show progress.
   prevBtn.disabled = index === 0;
   nextBtn.disabled = false;
-  nextBtn.textContent = index < LESSONS.length - 1 ? 'Next lesson →' : 'Finished — back to top';
+  nextBtn.textContent = index < LESSONS.length - 1 ? 'Next lesson →' : 'Back to home →';
 
   // Reset per-lesson transient state
   ctx._dragCount = 0;
@@ -284,20 +288,50 @@ function renderDots() {
   });
 }
 function goTo(index) {
-  if (index < 0 || index >= LESSONS.length) {
-    if (index >= LESSONS.length) {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-      goTo(0);
-    }
-    return;
-  }
+  if (index < 0 || index >= LESSONS.length) return;
+  hideHome();
   renderLesson(index);
   renderDots();
   tutorLog.innerHTML = `<div class="tutor-msg system">Ask anything about <em>${LESSONS[index].title}</em>. "What just happened?", "Why did the arrow move?", "Explain in one sentence."</div>`;
 }
 
 prevBtn.addEventListener('click', () => goTo(progress.current - 1));
-nextBtn.addEventListener('click', () => goTo(progress.current + 1));
+nextBtn.addEventListener('click', () => {
+  if (progress.current >= LESSONS.length - 1) {
+    showHome();
+    return;
+  }
+  goTo(progress.current + 1);
+});
+
+// ---------- Home ----------
+function renderHome() {
+  homeGridEl.innerHTML = '';
+  LESSONS.forEach((l, i) => {
+    const card = document.createElement('button');
+    card.type = 'button';
+    card.className = 'home-card' + (progress.done.includes(i) ? ' done' : '');
+    card.innerHTML = `
+      <div class="card-done">✓ done</div>
+      <div class="card-num">${l.num}</div>
+      <div class="card-title">${l.title}</div>
+      <div class="card-sub">${l.sub}</div>
+    `;
+    card.addEventListener('click', () => goTo(i));
+    homeGridEl.appendChild(card);
+  });
+}
+function showHome() {
+  renderHome();
+  homeEl.hidden = false;
+  layoutEl.style.display = 'none';
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+function hideHome() {
+  homeEl.hidden = true;
+  layoutEl.style.display = '';
+}
+brandBtn.addEventListener('click', showHome);
 
 // ---------- Tutor ----------
 tutorForm.addEventListener('submit', async (e) => {
@@ -364,7 +398,8 @@ function describeState() {
 }
 
 // ---------- Boot ----------
-goTo(Math.min(progress.current, LESSONS.length - 1));
+renderDots();
+showHome();
 
 // Debug handle
-window.__qubits = { ctx, LESSONS };
+window.__qubits = { ctx, LESSONS, goTo, showHome };
