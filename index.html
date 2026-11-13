@@ -68,20 +68,6 @@
         <button class="nav-btn ghost" id="prev-btn" disabled>← Previous</button>
         <button class="nav-btn primary" id="next-btn" disabled>Next lesson →</button>
       </div>
-
-      <div class="tutor">
-        <div class="tutor-head">
-          <span class="tutor-label">Ask the tutor</span>
-          <span class="tutor-meta">AI · plain English, lesson-aware</span>
-        </div>
-        <div class="tutor-log" id="tutor-log">
-          <div class="tutor-msg system">Ask anything about this lesson. "What just happened?", "Why did the arrow move there?", "Explain in one sentence."</div>
-        </div>
-        <form class="tutor-form" id="tutor-form">
-          <input class="tutor-input" id="tutor-input" type="text" placeholder="Ask about this lesson…" autocomplete="off" />
-          <button class="tutor-send" type="submit" id="tutor-send">Ask</button>
-        </form>
-      </div>
     </aside>
   </main>
 
@@ -89,6 +75,29 @@
     <span>Built by <a href="https://shreyas.uk">Shreyas Pavuluri</a></span>
     <span>Source · <a href="https://github.com/Shreyas-Profile/qubits">github.com/Shreyas-Profile/qubits</a></span>
   </footer>
+
+  <!-- Floating tutor -->
+  <button class="tutor-fab" id="tutor-fab" type="button" title="Ask the tutor">
+    <span class="fab-icon">✦</span>
+    <span class="fab-label">Ask</span>
+  </button>
+
+  <aside class="tutor-panel" id="tutor-panel" hidden>
+    <div class="tutor-head">
+      <div class="tutor-head-text">
+        <span class="tutor-label">Ask the tutor</span>
+        <span class="tutor-meta">AI · plain English, lesson-aware</span>
+      </div>
+      <button class="tutor-close" id="tutor-close" type="button" title="Close">×</button>
+    </div>
+    <div class="tutor-log" id="tutor-log">
+      <div class="tutor-msg system">Ask anything about this lesson. "What just happened?", "Why did the arrow move there?", "Explain in one sentence."</div>
+    </div>
+    <form class="tutor-form" id="tutor-form">
+      <input class="tutor-input" id="tutor-input" type="text" placeholder="Ask about this lesson…" autocomplete="off" />
+      <button class="tutor-send" type="submit" id="tutor-send">Ask</button>
+    </form>
+  </aside>
 
   <script type="module" src="js/main.js"></script>
 </body>

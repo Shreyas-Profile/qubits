@@ -42,6 +42,9 @@ const homeEl = $('home');
 const homeGridEl = $('home-grid');
 const layoutEl = $('layout');
 const brandBtn = $('brand-btn');
+const tutorFab = $('tutor-fab');
+const tutorPanel = $('tutor-panel');
+const tutorClose = $('tutor-close');
 
 // ---------- Progress ----------
 function loadProgress() {
@@ -325,13 +328,32 @@ function showHome() {
   renderHome();
   homeEl.hidden = false;
   layoutEl.style.display = 'none';
+  tutorFab.hidden = true;
+  tutorPanel.hidden = true;
   window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 function hideHome() {
   homeEl.hidden = true;
   layoutEl.style.display = '';
+  tutorFab.hidden = false;
 }
 brandBtn.addEventListener('click', showHome);
+
+// ---------- Floating tutor ----------
+function openTutor() {
+  tutorPanel.hidden = false;
+  tutorFab.hidden = true;
+  setTimeout(() => $('tutor-input').focus(), 100);
+}
+function closeTutor() {
+  tutorPanel.hidden = true;
+  tutorFab.hidden = false;
+}
+tutorFab.addEventListener('click', openTutor);
+tutorClose.addEventListener('click', closeTutor);
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape' && !tutorPanel.hidden) closeTutor();
+});
 
 // ---------- Tutor ----------
 tutorForm.addEventListener('submit', async (e) => {
